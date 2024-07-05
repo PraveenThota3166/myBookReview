@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Gugi&display=swap" rel="stylesheet">
+    <title>Book Review</title>
+</head>
+<body>
+    <h1>Venkata Naga Sai Praveen Thota</h1>
+    <h2>Review of Books Read By Me</h2>
+    <h2>You can view in any of the order <a href="/latest">latest</a>, <a href="/rating">rating</a>, <a href="/title">title</a>.</h2>
+    <div class="reviews">
+        <% for(let i=0;i<books.length;i++){ %>
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= books[i].isbn %>-M.jpg" alt="Book Cover">
+                <div class="book-details">
+                    <p>Title: <%= books[i].title %></p>
+                    <p>Author: <%= books[i].author %></p>
+                    <p>Genre: <%=books[i].genre%></p>
+                    <p>Completed On: <%= formatDateInWords(books[i].readby) %></p>
+                    <% function formatDateInWords(dateStr) { %>
+                        <% const date = new Date(dateStr); %>
+                        <% const options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
+                        <%= date.toLocaleDateString('en-US', options) %>
+                      <% } %>
+                    <p>Rating: <%= books[i].rating %>/10</p>
+                    <p>Review: <%= books[i].review %></p>
+                    <p>Characters: <%= books[i].characters %></p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    
+    <div class="contact">
+        <h4>I will keep on adding more book reviews as soon as I Complete.     Keep Checking My Portal.</h4>
+        <h5>Connect with me on <a href="https://www.linkedin.com/in/praveen-t-v-n-s-5393ab223/">Linkedin</a></h5>
+        <h5>Email: thotapraveen2004@gmail.com</h5>
+    </div>
+    
+</body>
+</html>
